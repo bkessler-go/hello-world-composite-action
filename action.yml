@@ -5,7 +5,7 @@ inputs:
     description: 'Version of Go to use for govulncheck'
     required: false
     default: '>=1.19.0'
- go-package: 
+  go-package: 
     description: 'Go Package to scan with govulncheck'
     required: false
     default: './..'
