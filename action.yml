@@ -12,6 +12,11 @@ outputs:
 runs:
   using: "composite"
   steps:
-      - uses: actions/checkout@v3
-
-      - run: echo hello
+    - uses: actions/checkout@v3
+    - id: random-number-generator
+      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      shell: bash
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - run: goodbye.sh
+      shell: bash
