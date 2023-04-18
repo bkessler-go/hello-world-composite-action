@@ -11,7 +11,7 @@ runs:
     - uses: actions/checkout@v3
     - uses: actions/setup-go@v4.0.0
       with:
-        go-version: go-version-input
+        go-version: ${{ inputs.go-version-input }}
     - name: Install govulncheck
       run: go install golang.org/x/vuln/cmd/govulncheck@latest
       shell: bash
