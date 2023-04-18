@@ -15,4 +15,6 @@ runs:
     - uses: actions/checkout@v3
     - uses: actions/setup-go@v4.0.0
     - run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      shell: bash
     - run: govulncheck ./...
+      shell: bash
