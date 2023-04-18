@@ -8,7 +8,7 @@ inputs:
   go-package: 
     description: 'Go Package to scan with govulncheck'
     required: false
-    default: './..'
+    default: './...'
 runs:
   using: "composite"
   steps:
