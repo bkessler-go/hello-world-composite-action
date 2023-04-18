@@ -1,20 +1,20 @@
 name: 'Hello World'
-description: 'Greet someone'
+description: 'Run govulncheck'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  go-version-input:  # version of Go to use for govulncheck
+    description: 'Version of Go to use for govulncheck'
+    required: false
+    default: '>=1.19.0'
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-go@v4.0.0
-    - run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      with:
+        go-version: go-version-input
+    - name: Install govulncheck
+      run: go install golang.org/x/vuln/cmd/govulncheck@latest
       shell: bash
-    - run: govulncheck ./...
+    - name: Run govulncheck
+      run: govulncheck ./...
       shell: bash
